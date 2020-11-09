@@ -1,8 +1,8 @@
 name: sidenavbar
-description: A new Flutter package.
+description: An easy to use web styled sidebar for navigation
 version: 0.0.1
-author:
-homepage:
+author: Aman kumar
+homepage: https://github.com/Assbomber
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
