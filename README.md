@@ -1,5 +1,5 @@
 ### SideNavBar
-![Screenshot](images/shot.gif)
+![Screenshot](https://github.com/Assbomber/SideNavBar/blob/main/screen-capture%20(1).gif?raw=true)
 
 This flutter package helps you create web styled side navigation. Its short and easy to use.
 
