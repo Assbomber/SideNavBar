@@ -3,19 +3,22 @@ library sidenavbar;
 import 'package:flutter/material.dart';
 
 class SideBar extends StatelessWidget {
-  Color backgroundColor;
-  double sideBarWidth;
-  double sideBarCollaspedWidth;
-
-  bool isCollasped;
-  Widget currentItem;
-  List<Widget> navItems;
+  final Color backgroundColor;
+  final double sideBarWidth;
+  final double sideBarCollapsedWidth;
+  final CrossAxisAlignment crossAxisAlignment;
+  final MainAxisAlignment mainAxisAlignment;
+  final bool isCollapsed;
+  final Widget currentItem;
+  final List<Widget> navItems;
   SideBar(
       {this.backgroundColor = Colors.blueGrey,
       @required this.currentItem,
       @required this.navItems,
-      @required this.isCollasped,
-      this.sideBarCollaspedWidth = 60,
+      @required this.isCollapsed,
+      this.crossAxisAlignment,
+      this.mainAxisAlignment,
+      this.sideBarCollapsedWidth = 60,
       this.sideBarWidth = 250});
   @override
   Widget build(BuildContext context) {
@@ -25,8 +28,11 @@ class SideBar extends StatelessWidget {
       child: Row(children: [
         Container(
           color: backgroundColor,
-          width: isCollasped ? sideBarCollaspedWidth : sideBarWidth,
-          child: Column(children: navItems),
+          width: isCollapsed ? sideBarCollapsedWidth : sideBarWidth,
+          child: Column(
+              mainAxisAlignment: mainAxisAlignment,
+              crossAxisAlignment: crossAxisAlignment,
+              children: navItems),
         ),
         Expanded(child: currentItem)
       ]),
@@ -34,38 +40,44 @@ class SideBar extends StatelessWidget {
   }
 }
 
-class navItem extends StatelessWidget {
+class NavItem extends StatelessWidget {
+  final Color hoverColor;
   final Widget title;
   final Widget icon;
-  final bool collapse;
-  final Function onpressed;
-  navItem({this.collapse = false, this.title, this.icon, this.onpressed});
+  final bool isCollapsed;
+  final Function onPressed;
+  NavItem(
+      {this.isCollapsed,
+      @required this.title,
+      @required this.icon,
+      this.onPressed,
+      this.hoverColor});
   @override
   Widget build(BuildContext context) {
     return FlatButton(
       padding: EdgeInsets.all(0),
-      onPressed: onpressed,
-      hoverColor: Colors.blueAccent,
+      onPressed: onPressed,
+      hoverColor: hoverColor,
       child: ListTile(
         leading: icon,
-        title: collapse ? null : title,
+        title: isCollapsed ? null : title,
       ),
     );
   }
 }
 
-class Collapser extends StatelessWidget {
-  Widget icon;
-  Function onpressed;
-  bool isCollasped;
-  Collapser({this.onpressed, this.icon, this.isCollasped});
-  var angle = 180 * 3.14 / 180;
+class CollapseIcon extends StatelessWidget {
+  final Widget icon;
+  final Function onPressed;
+  final bool isCollapsed;
+  CollapseIcon({this.onPressed, this.icon, this.isCollapsed});
+  final double angle = 180 * 3.14 / 180;
   @override
   Widget build(BuildContext context) {
     return Transform.rotate(
-        angle: isCollasped ? 180 * 3.14 / 180 : 360 * 3.14 / 180,
+        angle: isCollapsed ? 180 * 3.14 / 180 : 360 * 3.14 / 180,
         child: IconButton(
-          onPressed: onpressed,
+          onPressed: onPressed,
           icon: icon,
         ));
   }

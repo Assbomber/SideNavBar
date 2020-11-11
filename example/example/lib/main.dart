@@ -27,29 +27,29 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: SideBar(
-        isCollasped: isCollasped,
+        isCollapsed: isCollasped,
         currentItem: currentItem,
         navItems: [
-          navItem(
-            collapse: isCollasped,
+          NavItem(
+            isCollapsed: isCollasped,
             title: Text("Tab 1"),
             icon: Icon(Icons.person),
-            onpressed: () {
+            onPressed: () {
               show(ExamplePage1());
             },
           ),
-          navItem(
-            collapse: isCollasped,
+          NavItem(
+            isCollapsed: isCollasped,
             title: Text("Tab 1"),
             icon: Icon(Icons.person),
-            onpressed: () {
+            onPressed: () {
               show(ExamplePage2());
             },
           ),
-          Collapser(
-            isCollasped: isCollasped,
+          CollapseIcon(
+            isCollapsed: isCollasped,
             icon: Icon(Icons.arrow_back),
-            onpressed: () {
+            onPressed: () {
               setState(() {
                 isCollasped = !isCollasped;
               });
