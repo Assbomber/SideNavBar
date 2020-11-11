@@ -16,8 +16,8 @@ class SideBar extends StatelessWidget {
       @required this.currentItem,
       @required this.navItems,
       @required this.isCollapsed,
-      this.crossAxisAlignment,
-      this.mainAxisAlignment,
+      this.crossAxisAlignment = CrossAxisAlignment.center,
+      this.mainAxisAlignment = MainAxisAlignment.start,
       this.sideBarCollapsedWidth = 60,
       this.sideBarWidth = 250});
   @override
@@ -47,7 +47,7 @@ class NavItem extends StatelessWidget {
   final bool isCollapsed;
   final Function onPressed;
   NavItem(
-      {this.isCollapsed,
+      {@required this.isCollapsed,
       @required this.title,
       @required this.icon,
       this.onPressed,
@@ -70,7 +70,10 @@ class CollapseIcon extends StatelessWidget {
   final Widget icon;
   final Function onPressed;
   final bool isCollapsed;
-  CollapseIcon({this.onPressed, this.icon, this.isCollapsed});
+  CollapseIcon(
+      {@required this.onPressed,
+      @required this.icon,
+      @required this.isCollapsed});
   final double angle = 180 * 3.14 / 180;
   @override
   Widget build(BuildContext context) {
