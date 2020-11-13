@@ -1,5 +1,9 @@
 **switch branch to master
 
+The package is available at: https://pub.dev/packages/sidenavbar
+
+
+
 ### SideNavBar
 ![Screenshot](https://github.com/Assbomber/SideNavBar/blob/main/screen-capture%20(1).gif?raw=true)
 
