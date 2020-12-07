@@ -12,7 +12,7 @@ Add this to your package's pubspec.yaml file:
 
 ```sh
 dependencies:
-  sidenavbar: ^0.0.2
+  sidenavbar: ^0.0.10
 ```
 
 2. Install it
